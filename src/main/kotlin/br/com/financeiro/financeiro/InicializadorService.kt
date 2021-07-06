@@ -9,11 +9,11 @@ import java.time.LocalDate
 class InicializadorService {
 
     @Autowired
-    lateinit var inicializadorFacade: InicializadorFacade
+    lateinit var downloadFilesB3: DownloadFilesB3
 
     fun execute() {
         var listaMesesDownload = buscaMeses()
-        baixaArquivosB3()
+        baixaArquivosB3(listaMesesDownload)
     }
 
     private fun buscaMeses(): MutableList<LocalDate> {
@@ -28,7 +28,17 @@ class InicializadorService {
 
     }
 
-    private fun baixaArquivosB3() {
+    private fun baixaArquivosB3(listaMesesDownload: MutableList<LocalDate>) {
+
+        for (mesAnoDownload in listaMesesDownload){
+            downloadFilesB3.baixaSerieMensal(mesAnoDownload)
+        }
+
+
+        //DownloadZip
+        //UnzipFile
+        //Parse
+        //Persist
 
 
     }
